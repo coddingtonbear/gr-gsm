@@ -75,7 +75,8 @@ namespace gr {
             info.cell_id = (msg_elements[3]<<8)+msg_elements[4];         //take cell id
             info.lac = (msg_elements[8]<<8)+msg_elements[9];             //take lac
             info.mcc =  ((msg_elements[5] & 0xF)  * 100) + (((msg_elements[5] & 0xF0) >> 4) * 10) + ((msg_elements[6] & 0xF)); // take mcc
-            info.mnc = (msg_elements[7]>>4); //take mnc
+            info.mnc = msg_elements[7];
+            //info.mnc = (msg_elements[7] & 0xF) * 10 + (msg_elements[7]>>4); //take mnc
             info.ccch_conf = (msg_elements[10] & 0x7); // ccch_conf
             
             boost::mutex::scoped_lock lock(extract_mutex);
