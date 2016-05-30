@@ -77,6 +77,18 @@ namespace gr {
             info.mcc =  ((msg_elements[5] & 0xF)  * 100) + (((msg_elements[5] & 0xF0) >> 4) * 10) + ((msg_elements[6] & 0xF)); // take mcc
             info.mnc = ((msg_elements[7] & 0xF) * 100) + (((msg_elements[7] & 0xF0) >>4) * 10) + ((msg_elements[6] & 0xF0) >> 4); //take mnc
             info.ccch_conf = (msg_elements[10] & 0x7); // ccch_conf
+            printf(
+                "0x1b; %d %d %d\t%d %d %d\t%d %d %d\n",
+                (msg_elements[5]),
+                (msg_elements[5] & 0xF0 >> 4),
+                (msg_elements[5] & 0x0F),
+                (msg_elements[6]),
+                (msg_elements[6] & 0xF0 >> 4),
+                (msg_elements[6] & 0x0F),
+                (msg_elements[7]),
+                (msg_elements[7] & 0xF0 >> 4),
+                (msg_elements[7] & 0x0F),
+            );
             printf("5: %d", msg_elements[5]);
             printf("6: %d", msg_elements[6]);
             printf("7: %d", msg_elements[7]);
@@ -95,9 +107,18 @@ namespace gr {
             info.lac = (msg_elements[6]<<8)+msg_elements[7];            //take lac
             info.mcc =  ((msg_elements[3] & 0xF) * 100) + (((msg_elements[3] & 0xF0) >> 4) * 10) + ((msg_elements[4] & 0xF)); // take mcc
             info.mnc = ((msg_elements[6] & 0xF) * 100) + (((msg_elements[5] & 0xF0) >>4) * 10) + ((msg_elements[4] & 0xF0) >> 4); //take mnc
-            printf("3: %d", msg_elements[3]);
-            printf("4: %d", msg_elements[4]);
-            printf("5: %d", msg_elements[5]);
+            printf(
+                "0x1c; %d %d %d\t%d %d %d\t%d %d %d\n",
+                (msg_elements[3]),
+                (msg_elements[3] & 0xF0 >> 4),
+                (msg_elements[3] & 0x0F),
+                (msg_elements[4]),
+                (msg_elements[4] & 0xF0 >> 4),
+                (msg_elements[4] & 0x0F),
+                (msg_elements[5]),
+                (msg_elements[5] & 0xF0 >> 4),
+                (msg_elements[5] & 0x0F),
+            );
             
             boost::mutex::scoped_lock lock(extract_mutex);
             if(d_c0_channels.find(info.id) != d_c0_channels.end()){
