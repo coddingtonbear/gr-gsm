@@ -87,7 +87,7 @@ namespace gr {
                 (msg_elements[6] & 0x0F),
                 (msg_elements[7]),
                 (msg_elements[7] & 0xF0 >> 4),
-                (msg_elements[7] & 0x0F),
+                (msg_elements[7] & 0x0F)
             );
             printf("5: %d", msg_elements[5]);
             printf("6: %d", msg_elements[6]);
@@ -117,7 +117,7 @@ namespace gr {
                 (msg_elements[4] & 0x0F),
                 (msg_elements[5]),
                 (msg_elements[5] & 0xF0 >> 4),
-                (msg_elements[5] & 0x0F),
+                (msg_elements[5] & 0x0F)
             );
             
             boost::mutex::scoped_lock lock(extract_mutex);
