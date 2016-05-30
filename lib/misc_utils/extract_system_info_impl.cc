@@ -78,8 +78,9 @@ namespace gr {
             info.mnc = ((msg_elements[7] & 0xF) * 100) + (((msg_elements[7] & 0xF0) >>4) * 10) + ((msg_elements[6] & 0xF0) >> 4); //take mnc
             info.ccch_conf = (msg_elements[10] & 0x7); // ccch_conf
             printf(
-                "0x1b\t%d: %d %d %d\t%d %d %d\t%d %d %d\n",
+                "0x1b\t%d/%d: %d %d %d\t%d %d %d\t%d %d %d\n",
                 info.cell_id,
+                info.id,
                 (msg_elements[5]),
                 (msg_elements[5] & 0xF0 >> 4),
                 (msg_elements[5] & 0x0F),
@@ -106,8 +107,9 @@ namespace gr {
             info.mcc =  ((msg_elements[3] & 0xF) * 100) + (((msg_elements[3] & 0xF0) >> 4) * 10) + ((msg_elements[4] & 0xF)); // take mcc
             info.mnc = ((msg_elements[6] & 0xF) * 100) + (((msg_elements[5] & 0xF0) >>4) * 10) + ((msg_elements[4] & 0xF0) >> 4); //take mnc
             printf(
-                "0x1c\t%d: %d %d %d\t%d %d %d\t%d %d %d\n",
+                "0x1c\t%d/%d: %d %d %d\t%d %d %d\t%d %d %d\n",
                 info.cell_id,
+                info.id,
                 (msg_elements[3]),
                 (msg_elements[3] & 0xF0 >> 4),
                 (msg_elements[3] & 0x0F),
