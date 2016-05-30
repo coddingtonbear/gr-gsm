@@ -91,7 +91,7 @@ namespace gr {
             info.pwr_db = header->signal_dbm;
             info.lac = (msg_elements[6]<<8)+msg_elements[7];            //take lac
             info.mcc =  ((msg_elements[3] & 0xF) * 100) + (((msg_elements[3] & 0xF0) >> 4) * 10) + ((msg_elements[4] & 0xF)); // take mcc
-            info.mnc = ((msg_elements[7] & 0xF) * 100) + (((msg_elements[7] & 0xF0) >>4) * 10) + ((msg_elements[6] & 0xF0) >> 4); //take mnc
+            info.mnc = ((msg_elements[6] & 0xF) * 100) + (((msg_elements[5] & 0xF0) >>4) * 10) + ((msg_elements[4] & 0xF0) >> 4); //take mnc
             
             boost::mutex::scoped_lock lock(extract_mutex);
             if(d_c0_channels.find(info.id) != d_c0_channels.end()){
